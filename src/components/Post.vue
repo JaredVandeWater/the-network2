@@ -6,11 +6,16 @@
         <div class="card-body">
           <div class="d-flex">
             <img class="rounded-circle tiny-prof-img mr-2" :src="post.creator.picture" alt="Creator">
-            <p class="t-wrap">
-              <strong>
-                {{ post.creator.name }}
-              </strong>
-            </p>
+            <div class="t-wrap">
+              <p class="m-0">
+                <strong>
+                  {{ post.creator.name }}
+                </strong>
+              </p>
+              <p class="m-0">
+                <small>{{ state.time }}</small>
+              </p>
+            </div>
           </div>
           <p class="card-text">
             {{ post.body }}
@@ -44,7 +49,8 @@ export default {
     const state = reactive({
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
-      yourPost: computed(() => props.post.creatorId === state.account.id)
+      yourPost: computed(() => props.post.creatorId === state.account.id),
+      time: computed(() => new Date(props.post.createdAt).toLocaleTimeString())
     })
     return {
       state,
