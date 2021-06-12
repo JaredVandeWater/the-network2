@@ -12,6 +12,7 @@ import { reactive } from '@vue/reactivity'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
+import Notification from '../utils/Notification'
 export default {
   name: 'Home',
 

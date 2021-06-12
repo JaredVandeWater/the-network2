@@ -1,31 +1,24 @@
 <template>
   <div class="container">
     <SearchBar />
+    <h1><u>Profiles</u></h1>
+    <ProfileResult v-for="p in state.profiles" :key="p._id" :profile="p" />
+    <h1><u>Posts</u></h1>
     <Post v-for="p in state.posts" :key="p.id" :post="p" />
   </div>
 </template>
 
 <script>
 import { reactive } from '@vue/reactivity'
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
-import { postsService } from '../services/PostsService'
-import { useRoute } from 'vue-router'
+
 export default {
   name: 'SearchResults',
   setup() {
-    const route = useRoute()
-    onMounted(async() => {
-      try {
-        postsService.getSearchResults(route.params.query)
-      } catch (error) {
-        Notification.toast(error, 'error')
-      }
-    })
     const state = reactive({
-      account: computed(() => AppState.account),
-      yourProfile: computed(() => route.params.id === state.account.id),
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      profiles: computed(() => AppState.profileResults)
     })
     return {
       state

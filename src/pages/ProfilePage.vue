@@ -11,6 +11,7 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import { useRoute } from 'vue-router'
+import Notification from '../utils/Notification'
 export default {
   name: 'Profile',
   setup() {
