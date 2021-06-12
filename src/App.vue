@@ -1,6 +1,7 @@
 <template>
   <header>
-    <Navbar />
+    <Navbar class="my-sticky" />
+    <div class="my-top-pad"></div>
   </header>
   <main>
     <router-view />
@@ -26,5 +27,14 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+.my-sticky{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+}
 
+.my-top-pad{
+  margin-bottom: 6rem;
+}
 </style>

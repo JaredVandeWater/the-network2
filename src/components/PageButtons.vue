@@ -1,7 +1,4 @@
 <template>
-  <button @click="log" class="btn">
-    log
-  </button>
   <div class="row my-3 justify-content-center">
     <div class="col d-flex justify-content-center">
       <button v-if="state.prev" @click="prev" class="btn">

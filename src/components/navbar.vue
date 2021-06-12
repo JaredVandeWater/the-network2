@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
@@ -22,11 +22,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
-          </router-link>
-        </li>
       </ul>
       <span class="navbar-text">
         <button
@@ -46,7 +41,7 @@
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="rounded"
+              class="rounded-circle"
             />
             <span class="mx-3">{{ user.name }}</span>
           </div>
@@ -55,16 +50,27 @@
             :class="{ show: state.dropOpen }"
             @click="state.dropOpen = false"
           >
+
+            <router-link :to="{ name: 'Home' }">
+              <div class="list-group-item list-group-item-action hoverable">
+                Home
+              </div>
+            </router-link>
+            <router-link :to="{name: 'Profile', params:{id: account.id }}">
+              <div class="list-group-item list-group-item-action hoverable">
+                Profile
+              </div>
+            </router-link>
             <router-link :to="{ name: 'Account' }">
               <div class="list-group-item list-group-item-action hoverable">
-                Account
+                Settings
               </div>
             </router-link>
             <div
               class="list-group-item list-group-item-action hoverable"
               @click="logout"
             >
-              logout
+              Logout
             </div>
           </div>
         </div>
@@ -86,6 +92,7 @@ export default {
     return {
       state,
       user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
       async login() {
         AuthService.loginWithPopup()
       },

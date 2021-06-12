@@ -5,7 +5,9 @@
         <img v-if="post.imgUrl" class="card-img-top" :src="post.imgUrl" alt="Card image cap">
         <div class="card-body">
           <div class="d-flex">
-            <img class="rounded-circle tiny-prof-img mr-2" :src="post.creator.picture" alt="Creator">
+            <router-link :to="{name: 'Profile', params:{id: post.creator.id }}">
+              <img class="rounded-circle tiny-prof-img mr-2" :src="post.creator.picture" alt="Creator">
+            </router-link>
             <div class="t-wrap">
               <p class="m-0">
                 <strong>

@@ -1,9 +1,7 @@
 <template>
   <div class="container">
-    <SearchBar />
-    <CreatePost v-if="state.user.isAuthenticated" />
+    <CreatePost v-if="state.yourProfile" />
     <Post v-for="p in state.posts" :key="p.id" :post="p" />
-    <PageButtons />
   </div>
 </template>
 
@@ -12,20 +10,22 @@ import { reactive } from '@vue/reactivity'
 import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
+import { useRoute } from 'vue-router'
 export default {
-  name: 'Home',
-
+  name: 'Profile',
   setup() {
+    const route = useRoute()
     onMounted(async() => {
       try {
-        postsService.getAllPosts()
+        postsService.getProfilePosts(route.params.id)
       } catch (error) {
         Notification.toast(error, 'error')
       }
     })
     const state = reactive({
-      user: computed(() => AppState.user),
-      posts: computed(() => AppState.posts)
+      account: computed(() => AppState.account),
+      yourProfile: computed(() => route.params.id === state.account.id),
+      posts: computed(() => AppState.posts.filter(p => p.creatorId === route.params.id))
     })
     return {
       state

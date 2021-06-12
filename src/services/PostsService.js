@@ -9,6 +9,11 @@ class PostsService {
     AppState.pageButtons = { prev: res.data.newer, next: res.data.older }
   }
 
+  async getProfilePosts(id) {
+    const res = await api.get(`profiles/${id}/posts`)
+    AppState.posts = res.data.posts
+  }
+
   async likePost(id) {
     await api.post(`posts/${id}/like`)
     this.getAllPosts()
