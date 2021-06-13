@@ -8,8 +8,8 @@ class ProfileService {
     console.log(AppState.profileInfo, 'yes')
   }
 
-  async editData(id, newData) {
-    await api.post(`/profiles/${id}`, newData)
+  async editData(newData) {
+    await api.put('https://bcw-sandbox.herokuapp.com/account', newData)
   }
 }
 export const profileService = new ProfileService()
