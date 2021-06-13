@@ -11,6 +11,7 @@
 import { reactive } from '@vue/reactivity'
 import { searchService } from '../services/SearchService'
 import { useRouter } from 'vue-router'
+import { AppState } from '../AppState'
 export default {
   setup() {
     const router = useRouter()
@@ -21,6 +22,8 @@ export default {
       state,
       setSearchResults() {
         try {
+          AppState.posts = null
+          AppState.profileResults = null
           searchService.setSearchResults(state.query)
           router.push({ name: 'SearchResults', params: { query: state.query } })
         } catch (error) {

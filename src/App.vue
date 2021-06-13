@@ -5,6 +5,9 @@
   </header>
   <main>
     <router-view />
+    <div v-if="a" class="fxd">
+      <img class="w-75 d-flex" :src="a.tall">
+    </div>
   </main>
   <footer>
     <div class="bg-dark text-light text-center p-4">
@@ -14,13 +17,23 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from './AppState'
+import { postsService } from './services/PostsService'
 export default {
   name: 'App',
   setup() {
+    onMounted(async() => {
+      try {
+        postsService.getA()
+        console.log(AppState.a[0])
+      } catch (error) {
+        Notification.toast(error, 'error')
+      }
+    })
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
+      a: computed(() => AppState.a[0])
     }
   }
 }
@@ -36,5 +49,10 @@ export default {
 
 .my-top-pad{
   margin-bottom: 6rem;
+}
+
+.fxd{
+  position: fixed;
+  right: 0rem;
 }
 </style>

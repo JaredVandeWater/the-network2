@@ -36,6 +36,7 @@ class PostsService {
     AppState.posts = res.data.posts
     AppState.currentPage = res.data.page[0]
     AppState.pageButtons = { prev: res.data.newer, next: res.data.older }
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   async prev() {
@@ -43,6 +44,12 @@ class PostsService {
     AppState.posts = res.data.posts
     AppState.currentPage = res.data.page[0]
     AppState.pageButtons = { prev: res.data.newer, next: res.data.older }
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  async getA() {
+    const res = await api.get('ads')
+    AppState.a = res.data
   }
 }
 

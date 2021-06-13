@@ -19,6 +19,7 @@ export default {
   setup() {
     onMounted(async() => {
       try {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         postsService.getAllPosts()
       } catch (error) {
         Notification.toast(error, 'error')
