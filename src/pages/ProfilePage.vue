@@ -21,6 +21,7 @@ export default {
     onMounted(async() => {
       try {
         window.scrollTo({ top: 0, behavior: 'smooth' })
+        AppState.profileInfo = {}
         postsService.getProfilePosts(route.params.id)
         profileService.getProfileInfo(route.params.id)
       } catch (error) {

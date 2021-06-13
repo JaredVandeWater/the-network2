@@ -1,14 +1,21 @@
 <template>
   <div class="row my-3 justify-content-center">
-    <div class="col-lg-5 d-flex justify-content-center">
+    <div class="col-lg-6 d-flex justify-content-center">
       <div class="card w-100">
         <div class="card-body">
           <form @submit.prevent="createPost" action="">
-            <textarea v-model="state.newPost.body" name="" id="" cols="30" rows="10"></textarea>
-            <input v-model="state.newPost.imgUrl" type="text" placeholder="Img Url">
-            <button type="submit" class="btn btn-primary">
-              Post It!
-            </button>
+            <h1>Share Your Thoughts!</h1>
+            <textarea cols="54"
+                      v-model="state.newPost.body"
+                      rows="3"
+                      placeholder="Whats happenin?"
+            ></textarea>
+            <div class="d-flex justify-content-between">
+              <input style="width: 19rem" v-model="state.newPost.imgUrl" type="text" placeholder="Img url...">
+              <button type="submit" class="btn btn-primary">
+                Post It!
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -39,5 +46,7 @@ export default {
 </script>
 
 <style>
-
+ textarea{
+   resize: none;
+  }
 </style>

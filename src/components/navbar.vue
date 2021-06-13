@@ -1,28 +1,6 @@
 <template>
-  <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
-        />
-      </div>
-    </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
+  <nav class="sticky-top navbar navbar-expand navbar-dark my-color">
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-      </ul>
       <span class="navbar-text">
         <button
           class="btn btn-outline-primary text-uppercase"
@@ -43,7 +21,6 @@
               height="40"
               class="rounded-circle"
             />
-            <span class="mx-3">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -76,6 +53,16 @@
         </div>
       </span>
     </div>
+    <SearchBar />
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+      <div class="d-flex flex-column align-items-center">
+        <img
+          alt="logo"
+          src="../assets/img/network.png"
+          height="45"
+        />
+      </div>
+    </router-link>
   </nav>
 </template>
 
@@ -105,6 +92,11 @@ export default {
 </script>
 
 <style scoped>
+
+.my-color{
+  background-color:  #5f0777;
+}
+
 .dropdown-menu {
   user-select: none;
   display: block;

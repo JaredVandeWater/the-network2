@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <SearchBar />
     <CreatePost v-if="state.user.isAuthenticated" />
     <Post v-for="p in state.posts" :key="p.id" :post="p" />
     <PageButtons />

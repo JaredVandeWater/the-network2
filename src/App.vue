@@ -4,14 +4,18 @@
     <div class="my-top-pad"></div>
   </header>
   <main>
+    <div v-if="b" class="fxd2">
+      <img class="my-w" :src="b.tall">
+    </div>
     <router-view />
     <div v-if="a" class="fxd">
-      <img class="w-75 d-flex" :src="a.tall">
+      <img class="my-w" :src="a.tall">
     </div>
   </main>
   <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+    <div class="mt-5"></div>
+    <div class="bg-dark text-light text-center py-1 fixed-bottom">
+      Jared VandeWater 2021 |
     </div>
   </footer>
 </template>
@@ -33,13 +37,19 @@ export default {
     })
     return {
       appState: computed(() => AppState),
-      a: computed(() => AppState.a[0])
+      a: computed(() => AppState.a[0]),
+      b: computed(() => AppState.a[1])
     }
   }
 }
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+body{
+  min-width: 650px;
+}
+
 .my-sticky{
     position:fixed;
     top:0;
@@ -53,6 +63,26 @@ export default {
 
 .fxd{
   position: fixed;
-  right: 0rem;
+  right: -9rem;
+  bottom: 3rem
+}
+
+.fxd2{
+  position: fixed;
+  left: 1rem;
+  bottom: 3rem
+}
+
+@media only screen and (max-width: 1400px) {
+  .fxd{
+    display: none;
+  }
+  .fxd2{
+    display: none;
+  }
+}
+
+.my-w{
+  width: 58%;
 }
 </style>
