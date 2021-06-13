@@ -14,8 +14,16 @@
   </main>
   <footer>
     <div class="mt-5"></div>
-    <div class="bg-dark text-light text-center py-1 fixed-bottom">
+    <div class="purple text-light text-center py-1 fixed-bottom">
       Jared VandeWater 2021 |
+      <a target="_blank" href="https://www.linkedin.com/in/jaredvandewater/"><i title="LinkedIn"
+                                                                                class="mdi mdi-linkedin align-self-center ml-2"
+                                                                                aria-hidden="true"
+      ></i></a>
+      <a target="_blank" title="Github" href="https://github.com/JaredVandeWater"><i
+        class="mdi mdi-github align-self-center ml-2"
+        aria-hidden="true"
+      ></i></a>
     </div>
   </footer>
 </template>
@@ -45,6 +53,9 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+.purple{
+  background-color:  #5f0777;
+}
 
 body{
   min-width: 650px;

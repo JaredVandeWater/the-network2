@@ -1,68 +1,74 @@
 <template>
-  <nav class="sticky-top navbar navbar-expand navbar-dark my-color">
-    <div class="collapse navbar-collapse" id="navbarText">
-      <span class="navbar-text">
-        <button
-          class="btn btn-outline-primary text-uppercase"
-          @click="login"
-          v-if="!user.isAuthenticated"
-        >
-          Login
-        </button>
-
-        <div class="dropdown" v-else>
-          <div
-            class="dropdown-toggle"
-            @click="state.dropOpen = !state.dropOpen"
+  <nav class="sticky-top d-flex justify-content-between navbar-expand navbar-dark my-color">
+    <div class="ml-3">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <span class="navbar-text">
+          <button
+            class="btn btn-outline-primary text-uppercase"
+            @click="login"
+            v-if="!user.isAuthenticated"
           >
-            <img
-              :src="user.picture"
-              alt="user photo"
-              height="40"
-              class="rounded-circle"
-            />
-          </div>
-          <div
-            class="dropdown-menu p-0 list-group w-100"
-            :class="{ show: state.dropOpen }"
-            @click="state.dropOpen = false"
-          >
+            Login
+          </button>
 
-            <router-link :to="{ name: 'Home' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                Home
-              </div>
-            </router-link>
-            <router-link :to="{name: 'Profile', params:{id: account.id }}">
-              <div class="list-group-item list-group-item-action hoverable">
-                Profile
-              </div>
-            </router-link>
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                Settings
-              </div>
-            </router-link>
+          <div class="dropdown" v-else>
             <div
-              class="list-group-item list-group-item-action hoverable"
-              @click="logout"
+              class="dropdown-toggle"
+              @click="state.dropOpen = !state.dropOpen"
             >
-              Logout
+              <img
+                :src="user.picture"
+                alt="user photo"
+                height="40"
+                class="rounded-circle"
+              />
+            </div>
+            <div
+              class="dropdown-menu p-0 list-group w-100"
+              :class="{ show: state.dropOpen }"
+              @click="state.dropOpen = false"
+            >
+
+              <router-link :to="{ name: 'Home' }">
+                <div class="list-group-item list-group-item-action hoverable">
+                  Home
+                </div>
+              </router-link>
+              <router-link :to="{name: 'Profile', params:{id: account.id }}">
+                <div class="list-group-item list-group-item-action hoverable">
+                  Profile
+                </div>
+              </router-link>
+              <router-link :to="{ name: 'Account' }">
+                <div class="list-group-item list-group-item-action hoverable">
+                  Settings
+                </div>
+              </router-link>
+              <div
+                class="list-group-item list-group-item-action hoverable"
+                @click="logout"
+              >
+                Logout
+              </div>
             </div>
           </div>
-        </div>
-      </span>
-    </div>
-    <SearchBar />
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="../assets/img/network.png"
-          height="45"
-        />
+        </span>
       </div>
-    </router-link>
+    </div>
+    <div>
+      <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+        <div>
+          <img
+            alt="logo"
+            src="../assets/img/network.png"
+            height="45"
+          />
+        </div>
+      </router-link>
+    </div>
+    <div class="mr-2">
+      <SearchBar />
+    </div>
   </nav>
 </template>
 
